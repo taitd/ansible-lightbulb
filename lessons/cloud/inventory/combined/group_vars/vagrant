@@ -1,1 +1,2 @@
-../../local/group_vars/vagrant
+ansible_ssh_user: vagrant
+web_group: web
