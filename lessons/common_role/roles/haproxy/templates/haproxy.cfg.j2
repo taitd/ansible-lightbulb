@@ -22,7 +22,11 @@ defaults
         timeout server          1m
         timeout http-keep-alive 10s
         timeout check           10s
-
+                                              
+        # enable stats uri                    
+        stats enable                          
+        stats uri /haproxy?stats              
+                                              
 frontend web
         bind          0.0.0.0:80
         mode          http

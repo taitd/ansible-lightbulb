@@ -10,8 +10,14 @@
     shell: "{{ apache_service }} -v|grep version|awk '{print $3}'|cut -f2 -d'/'"
     register: result
 
+  #- name: Display gatthered apache version result
+  - debug: var=result
+
   - name: set a fact for the apache version
     set_fact: apache_version="{{ result.stdout }}"
+
+  - name: Display apache_hostname variables/facts known for a host
+    debug: var=hostvars[inventory_hostname].apache_version
 
   - name: create dynamic group with apache version
     group_by: key=apache_{{ apache_version }}
